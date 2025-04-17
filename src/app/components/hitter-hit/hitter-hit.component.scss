@@ -1,0 +1,21 @@
+.card{
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10px;
+}
+
+.cardName{
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 20vw;
+}
+.dataWrapper{
+  display: flex;
+  flex-direction: column;
+}

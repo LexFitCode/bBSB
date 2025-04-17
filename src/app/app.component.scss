@@ -1,0 +1,192 @@
+.gamesCard{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 40vw;
+}
+.gamesCard  div{
+  padding: 10px;
+}
+.gamesCardTitle{
+  font-weight: bold;
+  font-size: 18px;
+}
+.gamesCardSubtitle{
+font-size : 13px;
+}
+.oddWrapper{
+  display: flex;
+  min-width: 50vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.oddsCard{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  align-items: center;
+  width: 20vw;
+  justify-content: center;
+  padding: 0px 10px;
+}
+.oddsItem{
+  margin: 5px;
+}
+
+.card{
+  border: 1px solid;
+  display: flex;
+}
+
+.cardName{
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 15vw;
+  text-align: center;
+}
+.dataWrapper{
+  display: flex;
+  flex-direction: column;
+}
+.gameItem{
+  margin: 5px;
+}
+.playerVsWrapper{
+  display: flex;
+  flex-direction: row;
+}
+.playerVersusCard{
+  width: 75px;
+  display: flex;
+  flex-direction: column;
+}
+.cover{
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 20px;
+}
+.playerWrapper{
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+.playerCard{
+  display: flex;
+  flex-direction: column;
+  min-width: 30vw;
+  border: 1px solid black;
+  margin: 0px 5px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+  padding: 5px;
+  border-radius: 20px;
+}
+.playerCardName {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+.oddsWrapper{
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  justify-content: space-evenly
+}
+.playerVs{
+  display: flex;
+  flex-direction: column;
+}
+.playerCardVs{
+  display: flex;
+  flex-direction: row;
+  width: 40vw;
+  border: 1px solid black;
+  border-radius: 20px;
+  text-align: center;
+  justify-content: space-evenly;
+}
+.nameWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameWrapper h5{
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+.horizontal-scroll-wrapper-web{
+  width: 100%;
+  height: 15%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+}
+.horizontal-scroll-wrapper-web > div {
+  flex: 0 0 auto;
+}
+.oddsCard{
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10px;
+  width: 40vw;
+  text-align: center;
+  border-radius: 20px;
+}
+.oddsItemWrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 20vw;
+
+}
+.name{
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.team{
+  font-size: 15px;
+  font-weight: bold;
+  text-align: right;
+}
+.game{
+  font-size: 15px;
+  font-weight: bold;
+  text-align: right;
+}
+.buttonWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+.buttonWrapper div{
+  padding: 8px 20px;
+  margin: 10px 20px;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 30vw;
+  text-align: center;
+
+}

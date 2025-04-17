@@ -1,0 +1,12 @@
+<div class="horizontal-scroll-wrapper-web">
+  @for (item of odds; track $index) {
+  <div class="oddsCard">
+    <span>{{ item?.market   }}</span>
+    <span>{{ item?.line   }}</span>
+    <div class="oddsItemWrapper">
+      <span class="oddsItem">{{ item?.overOdd  }}</span>
+      <span class="oddsItem">{{ item?.underOdd  }}</span>
+
+    </div>
+  </div>}
+ </div>

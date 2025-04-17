@@ -1,0 +1,17 @@
+.pitcherWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;}
+
+
+.pitcherWrapper div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  width: 150px;
+text-align: center;
+}
+
+

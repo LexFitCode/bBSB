@@ -1,0 +1,19 @@
+@for (item of playersHitters; track $index) {
+
+  @if(item.vsPitcher.avg > .280 && item.vsPitcherThrow.avg > .280){
+    <div class="card">
+      <div class="">
+        <span>{{ item.name }}</span>
+        <span>{{ item.team }}</span>
+      </div>
+      <div class="">
+        <app-odds [odds]="item.odds"></app-odds>
+        <app-games [games]="item.games"></app-games>
+        <app-vs-pitcher [vsPitcher]="item.vsPitcher"
+                        [vsPitcherThrow]="item.vsPitcherThrow"></app-vs-pitcher>
+      </div>
+    </div>
+  }
+
+}
+
