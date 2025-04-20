@@ -55,22 +55,15 @@ export class AppComponent {
         this.view = view
         this.playersVersus.forEach((element: any) => {
           let playerStats : any = {}
-          console.log(element)
           const game = element.game
           const odds = element.odds
           const games = element.games
           const gamesvS = element.gamesvS
-          console.log(games)
-          console.log(element.games.game1.strikeOuts)
           if(odds !== null){
             odds.forEach((element: any) => {
-              console.log(games)
-              console.log(element.market)
               playerStats.name = element.name
               playerStats.game = game
-
               if(element.market === "Pitcher - Ponches (+/-)"){
-                console.log(games)
                 playerStats.strikeOut = {}
                 playerStats.strikeOut.market = "StrikeOuts"
                 playerStats.strikeOut.line = element.line
@@ -116,7 +109,6 @@ export class AppComponent {
                 }
               }*/
               if(element.market === "Pitcher - Base por bolas (+/-)"){
-                console.log("w")
                 playerStats.walk = {}
                 playerStats.walk.market = "Walk"
                 playerStats.walk.line = element.line
@@ -138,7 +130,6 @@ export class AppComponent {
                 }
               }
               if(element.market === "Pitcher - Carreras limpias"){
-                console.log("er")
                 playerStats.earnedRun = {}
                 playerStats.earnedRun.market = "Earned Runs"
                 playerStats.earnedRun.line = element.line
@@ -160,7 +151,6 @@ export class AppComponent {
                 }
               }
               if(element.market === "Pitcher - Hits permitidos (+/-)"){
-                console.log("ha")
                 playerStats.hitsAllowed = {}
                 playerStats.hitsAllowed.market = "Hits Allowed"
                 playerStats.hitsAllowed.line = element.line
@@ -186,7 +176,7 @@ export class AppComponent {
             });
           }
           console.log(playerStats)
-          this.playersToView.push((playerStats))
+          this.playersToView.push(playerStats)
         });
         console.log(this.playersToView)
       } else if(view === "Hitters"){
