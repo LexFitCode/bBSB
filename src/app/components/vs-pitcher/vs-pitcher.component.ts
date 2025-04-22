@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './vs-pitcher.component.scss'
 })
 export class VsPitcherComponent {
-  @Input() vsPitcher : any
-  @Input() vsPitcherThrow : any
+  @Input() gamesvsPitcher : any
+  @Input() gamesvsThrow : any
 }

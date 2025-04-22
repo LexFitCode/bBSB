@@ -3,11 +3,11 @@
   <div (click)="setView('Pitchers')" >Pitchers</div>
 </div>
 
-@if (view === "Hitters"){<app-hitter-hit [playersHitters]="playersHitters"></app-hitter-hit>}
+@if (view === "Hitters"){<app-hitter-hit [playersHitters]="playersToView"></app-hitter-hit>}
 @if (view === "Pitchers"){
-@for (item of playersVersus; track $index) {
+@for (item of playersToView; track $index) {
 
-  @if(item.games){
+  @if(item.name){
     <div
     class="">
       <div class="nameWrapper">
@@ -18,111 +18,41 @@
     <div>
 
 
-      <div class="horizontal-scroll-wrapper-web">
+    <div class="horizontal-scroll-wrapper-web">
       @for (item of item.odds; track $index){
-        <div class="oddsCard">
-          <span>{{ item?.market   }}</span>
+        <div class="oddsCard" >
+          <span class="gamesCardTitle" [ngClass]="{'oddCover' : item.cover >= 3}">{{ item?.market   }}</span>
           <span>{{ item?.line   }}</span>
           <div>
-            <span >{{ item?.overOdd  }}</span>
-            <span >{{ item?.underOdd  }}</span>
+            <span >{{ item?.over  }}</span>
+            <span >{{ item?.under  }}</span>
           </div>
+          <div class="gamesCard">
+            <span class="gamesCardSubtitle">Ultimos 5 juegos</span>
+            <div>
+              <span class="gameItem" [ngClass]="{'cover' : item?.games?.game1 > item.line}" >{{ item?.games?.game1}}</span>
+              <span class="gameItem" [ngClass]="{'cover' : item?.games?.game2 > item.line}">{{ item?.games?.game2}}</span>
+              <span class="gameItem" [ngClass]="{'cover' : item?.games?.game3 > item.line}">{{ item?.games?.game3}}</span>
+              <span class="gameItem" [ngClass]="{'cover' : item?.games?.game4 > item.line}">{{ item?.games?.game4}}</span>
+              <span class="gameItem" [ngClass]="{'cover' : item?.games?.game5 > item.line}">{{ item?.games?.game5}}</span>
+            </div>
+          </div>
+          @if (item.gamesvS.game1){<div class="gamesCard">
+            <span class="gamesCardSubtitle">Ultimos 5 juegos vs {{item.rival}}</span>
+            <div>
+              <span class="gameItem" [ngClass]="{'cover' : item?.gamesvS?.game1 > item.line}">{{ item?.gamesvS?.game1}}</span>
+              <span class="gameItem" [ngClass]="{'cover' : item?.gamesvS?.game2 > item.line}">{{ item?.gamesvS?.game2}}</span>
+              <span class="gameItem" [ngClass]="{'cover' : item?.gamesvS?.game3 > item.line}">{{ item?.gamesvS?.game3}}</span>
+              <span class="gameItem" [ngClass]="{'cover' : item?.gamesvS?.game4 > item.line}">{{ item?.gamesvS?.game4}}</span>
+              <span class="gameItem" [ngClass]="{'cover' : item?.gamesvS?.game5 > item.line}">{{ item?.gamesvS?.game5}}</span>
+            </div>
+          </div>}
         </div>
        }
-      </div>
-    <div class="horizontal-scroll-wrapper-web">
-      <div class="oddsCard">
-        <div class="gamesCard">
-          <span class="gamesCardTitle">StrikeOuts</span>
-          <span class="gamesCardSubtitle">Ultimos 5 juegos</span>
-          <div>
-            <span class="gameItem">{{ item?.games?.game1?.strikeOuts}}</span>
-            <span class="gameItem">{{ item?.games?.game2?.strikeOuts2}}</span>
-            <span class="gameItem">{{ item?.games?.game3?.strikeOuts3}}</span>
-            <span class="gameItem">{{ item?.games?.game4?.strikeOuts4}}</span>
-            <span class="gameItem">{{ item?.games?.game5?.strikeOuts5}}</span>
-          </div>
-        </div>
-        <div class="gamesCard">
-          <span class="gamesCardSubtitle">Ultimos 5 juegos vs {{item.rival}}</span>
-          <div>
-            <span class="gameItem">{{ item?.gamesvS?.game1?.strikeOuts}}</span>
-            <span class="gameItem">{{ item?.gamesvS?.game2?.strikeOuts2}}</span>
-            <span class="gameItem">{{ item?.gamesvS?.game3?.strikeOuts3}}</span>
-            <span class="gameItem">{{ item?.gamesvS?.game4?.strikeOuts4}}</span>
-            <span class="gameItem">{{ item?.gamesvS?.game5?.strikeOuts5}}</span>
-          </div>
-        </div>
-      </div>
-      <div class="oddsCard">
-        <div class="gamesCard">
-        <span class="gamesCardTitle">Walks</span>
-          <span class="gamesCardSubtitle">Ultimos 5 juegos</span>
-          <div>
-            <span class="gameItem" >{{ item?.games?.game1?.baseXBola}}</span>
-            <span class="gameItem" >{{ item?.games?.game2?.baseXBola2}}</span>
-            <span class="gameItem" >{{ item?.games?.game3?.baseXBola3}}</span>
-            <span class="gameItem" >{{ item?.games?.game4?.baseXBola4}}</span>
-            <span class="gameItem" >{{ item?.games?.game5?.baseXBola5}}</span>
-          </div>
-        </div>
-        <div class="gamesCard">
-          <span class="gamesCardSubtitle">Ultimos 5 juegos vs {{item.rival}}</span>
-          <div>
-            <span class="gameItem" >{{ item?.gamesvS?.game1?.baseXBola}}</span>
-            <span class="gameItem" >{{ item?.gamesvS?.game2?.baseXBola2}}</span>
-            <span class="gameItem" >{{ item?.gamesvS?.game3?.baseXBola3}}</span>
-            <span class="gameItem" >{{ item?.gamesvS?.game4?.baseXBola4}}</span>
-            <span class="gameItem">{{ item?.gamesvS?.game5?.baseXBola5}}</span>
-          </div>
-        </div>
-      </div>
-      <div class="oddsCard">
-        <div class="gamesCard">
-          <span class="gamesCardTitle">Carreras Limpias</span>
-          <span class="gamesCardSubtitle">Ultimos 5 juegos</span>
-          <div>
-            <span class="gameItem" >{{ item?.games?.game1?.earnedRuns}}</span>
-            <span class="gameItem" >{{ item?.games?.game2?.earnedRuns2}}</span>
-            <span class="gameItem" >{{ item?.games?.game3?.earnedRuns3}}</span>
-            <span class="gameItem" >{{ item?.games?.game4?.earnedRuns4}}</span>
-            <span class="gameItem" >{{ item?.games?.game5?.earnedRuns5}}</span>
-          </div>
-        </div>
-        <div class="gamesCard">
-          <span class="gamesCardSubtitle">Ultimos 5 juegos vs {{item.rival}}</span>
-          <div>
-            <span class="gameItem" >{{ item?.gamesvS?.game1?.earnedRuns}}</span>
-            <span class="gameItem" >{{ item?.gamesvS?.game2?.earnedRuns2}}</span>
-            <span class="gameItem" >{{ item?.gamesvS?.game3?.earnedRuns3}}</span>
-            <span class="gameItem" >{{ item?.gamesvS?.game4?.earnedRuns4}}</span>
-            <span class="gameItem" >{{ item?.gamesvS?.game5?.earnedRuns5}}</span>
-          </div>
-        </div>
-      </div>
-      <div class="oddsCard">
-        <div class="gamesCard">
-          <span class="gamesCardTitle">Hits permitidos</span>
-          <span class="gamesCardSubtitle">Ultimos 5 juegos</span>
-          <div>
-            <span class="gameItem" >{{ item?.games?.game1?.hitsAllowed}}</span>
-            <span class="gameItem" >{{ item?.games?.game2?.hitsAllowed2}}</span>
-            <span class="gameItem" >{{ item?.games?.game3?.hitsAllowed3}}</span>
-            <span class="gameItem" >{{ item?.games?.game4?.hitsAllowed4}}</span>
-            <span class="gameItem" >{{ item?.games?.game5?.hitsAllowed5}}</span>
-          </div>
-        </div>
-        <div class="gamesCard">
-          <span class="gamesCardSubtitle">Ultimos 5 juegos vs {{item.rival}}</span>
-          <div>
-            <span class="gameItem">{{ item?.gamesvS?.game1?.hitsAllowed}}</span>
-            <span class="gameItem">{{ item?.gamesvS?.game2?.hitsAllowed2}}</span>
-            <span class="gameItem">{{ item?.gamesvS?.game3?.hitsAllowed3}}</span>
-            <span class="gameItem">{{ item?.gamesvS?.game4?.hitsAllowed4}}</span>
-            <span class="gameItem">{{ item?.gamesvS?.game5?.hitsAllowed5}}</span>
-          </div>
-        </div>
-      </div>
+    </div>
+
+
+
     </div>
     <div class="horizontal-scroll-wrapper-web">
       @for (item of item.players; track $index){
@@ -153,7 +83,7 @@
       }
     </div>
   </div>
-</div>}
+}
 }
 
 }

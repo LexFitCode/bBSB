@@ -1,12 +1,16 @@
 <div class="horizontal-scroll-wrapper-web">
   @for (item of odds; track $index) {
-  <div class="oddsCard">
-    <span>{{ item?.market   }}</span>
-    <span>{{ item?.line   }}</span>
-    <div class="oddsItemWrapper">
-      <span class="oddsItem">{{ item?.overOdd  }}</span>
-      <span class="oddsItem">{{ item?.underOdd  }}</span>
-
+    <div class="oddsCard">
+    <span class="oddTitle" [ngClass]="{'oddCoverTitle' : item.cover >= 3}">{{ item?.market   }}</span>
+    <div class="oddsContentCard">
+      <span>{{ item?.line   }}</span>
+      <div class="oddsItemWrapper">
+        <span class="oddsItem">{{ item?.over}}</span>
+        <span class="oddsItem">{{ item?.under  }}</span>
+      </div>
+      <app-games [games]="item.games" [line]="item.line"></app-games>
+      <app-vs-pitcher [gamesvsPitcher]="item.gamesvsPitcher" [gamesvsThrow]="item.gamesvsThrow"></app-vs-pitcher>
     </div>
-  </div>}
+  </div>
+}
  </div>

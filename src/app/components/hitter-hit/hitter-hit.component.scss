@@ -1,10 +1,10 @@
 .card{
-  border: 1px solid;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0px 10px;
+  padding: 15px;
+
 }
 
 .cardName{
@@ -18,4 +18,19 @@
 .dataWrapper{
   display: flex;
   flex-direction: column;
+}
+.vsPitcherWrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.vsPitcherItem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  font-weight: bold;
+  width: 150px;
 }

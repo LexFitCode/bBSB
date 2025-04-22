@@ -1,10 +1,11 @@
-<div class="pitcherWrapper">
-  @if(vsPitcher.Hits !== ""){<div>
-    <span>{{vsPitcher.vsPlayer}}</span>
-    <span>{{vsPitcher.avg}}</span>
+<div class="oddsItem">
+  @if(gamesvsPitcher?.games !== ""){<div class="item">
+    <span>{{gamesvsPitcher?.games}}</span>
+    <span>{{gamesvsPitcher?.stats}}</span>
   </div>}
-  <div>
-    <span>{{vsPitcherThrow.vsPlayer}}</span>
-    <span>{{vsPitcherThrow.avg}}</span>
+  <div class="item">
+    <span>{{gamesvsThrow?.games}}</span>
+    <span>{{gamesvsThrow?.stats}}</span>
   </div>
+
 </div>

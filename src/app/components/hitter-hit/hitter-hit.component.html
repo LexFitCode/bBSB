@@ -1,15 +1,22 @@
 @for (item of playersHitters; track $index) {
 
-    @if(item.odds[0]){<div class="card">
+    @if(item.name && item.rivalAvg > .280 && item.rivalThrowAvg > .280 ){<div class="card">
       <div class="">
         <span>{{ item.name }}</span>
         <span>{{ item.team }}</span>
       </div>
       <div class="">
-        <app-odds [odds]="item.odds"></app-odds>
-        <app-games [games]="item.games"></app-games>
-        <app-vs-pitcher [vsPitcher]="item.vsPitcher"
-                        [vsPitcherThrow]="item.vsPitcherThrow"></app-vs-pitcher>
+        <app-odds [odds]="item.odds" [cover]="item.cover"></app-odds>
+        <div class="vsPitcherWrapper">
+          <div class="vsPitcherItem">
+            <span>{{item.rival}}</span>
+            <span>{{item.rivalAvg}}</span>
+          </div>
+          <div class="vsPitcherItem">
+            <span>{{item.rivalThrow}}</span>
+            <span>{{item.rivalThrowAvg}}</span>
+          </div>
+        </div>
       </div>
     </div>
   }
