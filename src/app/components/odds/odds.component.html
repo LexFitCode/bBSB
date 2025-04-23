@@ -2,7 +2,7 @@
   @for (item of odds; track $index) {
     <div class="oddsCard">
     <span class="oddTitle" [ngClass]="{'oddCoverTitle' : item.cover >= 3}">{{ item?.market   }}</span>
-    <div class="oddsContentCard">
+    <div class="oddsCardVs">
       <span>{{ item?.line   }}</span>
       <div class="oddsItemWrapper">
         <span class="oddsItem">{{ item?.over}}</span>

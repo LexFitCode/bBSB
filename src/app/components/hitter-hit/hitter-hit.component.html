@@ -1,18 +1,19 @@
 @for (item of playersHitters; track $index) {
 
-    @if(item.name && item.rivalAvg > .280 && item.rivalThrowAvg > .280 ){<div class="card">
-      <div class="">
-        <span>{{ item.name }}</span>
-        <span>{{ item.team }}</span>
+    @if(item.name ){<div class="card">
+      <div class="nameWrapper">
+        <span class="name">{{ item.name }}</span>
+        <span class="team">{{ item.team }}</span>
+        <span class="game">{{ item?.game?.awayName }} at {{ item?.game?.homeName }} {{ item?.game?.hour }}</span>
       </div>
       <div class="">
         <app-odds [odds]="item.odds" [cover]="item.cover"></app-odds>
         <div class="vsPitcherWrapper">
-          <div class="vsPitcherItem">
+          @if(item.rivalAvg !== "" ){<div class="vsPitcherItem" [ngClass]="{'oddCoverTitle' : item.rivalAvg > .280}">
             <span>{{item.rival}}</span>
             <span>{{item.rivalAvg}}</span>
-          </div>
-          <div class="vsPitcherItem">
+          </div>}
+          <div class="vsPitcherItem" [ngClass]="{'oddCoverTitle' : item.rivalThrowAvg > .280}">
             <span>{{item.rivalThrow}}</span>
             <span>{{item.rivalThrowAvg}}</span>
           </div>

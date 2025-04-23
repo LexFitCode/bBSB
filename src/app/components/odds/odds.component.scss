@@ -49,3 +49,15 @@ justify-content: center;
   width: 100%;
   margin:5px;
 }
+.oddsCardVs{
+  display: flex;
+  flex-direction: column;
+  margin: 10px ;
+  width: 100%;
+  div {
+   display: flex;
+   justify-content: space-around;
+   margin: 10px;
+   justify-items: center;
+  }
+ }

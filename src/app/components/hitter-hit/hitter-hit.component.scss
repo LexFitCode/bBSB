@@ -34,3 +34,30 @@
   font-weight: bold;
   width: 150px;
 }
+.nameWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.name{
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.team{
+  font-size: 15px;
+  font-weight: bold;
+  text-align: right;
+}
+.game{
+  font-size: 15px;
+  font-weight: bold;
+  text-align: right;
+}
+.oddCoverTitle{
+  background-color: aliceblue;
+  border-radius: 20px;
+  width: 150px;
+  height: 60px;
+}

@@ -33,6 +33,7 @@ export class AppComponent {
   setIconsApiHitters(){
     this.HittersService.getHitters().subscribe((data)=>{
       this.playersHitters = data
+      console.log(data)
     })
   }
   setIconsApiPitchers(){
@@ -49,8 +50,8 @@ export class AppComponent {
 
 
   setView(view: string){
-    this.playersToView = []
     if(this.view !== view){
+      this.playersToView = []
       if(view === "Pitchers"){
         this.view = view
         this.playersVersus.forEach((element2: any) => {
@@ -65,6 +66,7 @@ export class AppComponent {
             playerStats.players = element2.players
             odds.forEach((element: any) => {
               playerStats.name = element.name
+              playerStats.team = element2.team.replace("2025 ","")
               playerStats.game = game
               if(element.market === "Pitcher - Ponches (+/-)"){
                 const props =  {
@@ -226,7 +228,7 @@ export class AppComponent {
             });
           }
           this.playersToView.push(playerStats)
-          console.log(this.playersToView)
+
         });
       } else if(view === "Hitters"){
         this.view = view
@@ -242,6 +244,7 @@ export class AppComponent {
           if(odds !== null){
             odds.forEach((element: any) => {
               playerStats.name = element.name
+              playerStats.team = element2.team.replace("2025 ","")
               playerStats.rival = vsPitcher.vsPlayer,
               playerStats.rivalAvg = vsPitcher.avg,
               playerStats.rivalThrow = vsThrow.vsPlayer,
@@ -523,6 +526,7 @@ export class AppComponent {
           this.playersToView.push(playerStats)
         });
       }
+      console.log(this.playersToView)
     }
   }
   setCover(g1: any,g2: any,g3: any,g4: any,g5: any, line: any){
