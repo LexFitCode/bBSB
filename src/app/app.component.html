@@ -1,6 +1,6 @@
-<div class="buttonWrapper">
-  <div (click)="setView('Hitters')" >Hitters</div>
-  <div (click)="setView('Pitchers')" >Pitchers</div>
+<div class="buttonWrapper2">
+  <div [ngClass]="{'active' : view === 'Hitters'}" (click)="setView('Hitters')" >Hitters</div>
+  <div [ngClass]="{'active' : view === 'Pitchers'}" (click)="setView('Pitchers')" >Pitchers</div>
 </div>
 
 @if (view === "Hitters"){<app-hitter-hit [playersHitters]="playersToView"></app-hitter-hit>}

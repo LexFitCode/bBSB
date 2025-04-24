@@ -62,6 +62,7 @@ export class AppComponent {
           const gamesvS = element2.gamesvS
           playerStats.odds = []
           playerStats.rival = element2.rival
+          console.log(element2)
           if(odds !== null){
             playerStats.players = element2.players
             odds.forEach((element: any) => {
@@ -102,27 +103,40 @@ export class AppComponent {
                 }
                 playerStats.odds.push(props)
               }
-              /*if(element.market === "Pitcher - Outs (+/-)"){
-                playerStats.out = {}
-                playerStats.out.market = "Outs"
-                playerStats.out.line = element.line
-                playerStats.out.over = element.overOdd
-                playerStats.out.under = element.underOdd
-                playerStats.outs.games = {
-                  "game1" : games.game1?.outs,
-                  "game2" : games.game2.outs2,
-                  "game3" : games.game3.outs3,
-                  "game4" : games.game4.outs4,
-                  "game5" : games.game5.outs5
+              if(element.market === "Pitcher - Outs (+/-)"){
+                const props =  {
+                  "rival" : element2.rival,
+                  "market" : "Outs",
+                  "line" : parseFloat(element.line),
+                  "over" : element.overOdd,
+                  "under" : element.underOdd,
+                 /* "cover" :this.setCover(games.game1.baseXBola,
+                    games.game2.baseXBola2,
+                    games.game3.baseXBola3,
+                    games.game4.baseXBola4,
+                    games.game5.baseXBola5, element.line),
+                  "coverVs" : this.setCover(gamesvS.game1.baseXBola,
+                    gamesvS.game2.baseXBola2,
+                    gamesvS.game3.baseXBola3,
+                    gamesvS.game4.baseXBola4,
+                    gamesvS.game5.baseXBola5, element.line),*/
+                  "games" :{
+                    "game1" : games.game1?.outs,
+                    "game2" : games.game2.outs2,
+                    "game3" : games.game3.outs3,
+                    "game4" : games.game4.outs4,
+                    "game5" : games.game5.outs5
+                  },
+                  "gamesvS" : {
+                    "game1" : gamesvS?.game1.outs,
+                    "game2" : gamesvS?.game2.outs2,
+                    "game3" : gamesvS?.game3.outs3,
+                    "game4" : gamesvS?.game4.outs4,
+                    "game5" : gamesvS?.game5.outs5
+                  }
                 }
-                playerStats.outs.gamesvS = {
-                  "game1" : gamesvS?.game1.outs,
-                  "game2" : gamesvS?.game2.outs2,
-                  "game3" : gamesvS?.game3.outs3,
-                  "game4" : gamesvS?.game4.outs4,
-                  "game5" : gamesvS?.game5.outs5
-                }
-              }*/
+                playerStats.odds.push(props)
+              }
               if(element.market === "Pitcher - Base por bolas (+/-)"){
                 const props =  {
                   "rival" : element2.rival,
