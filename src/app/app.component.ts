@@ -34,13 +34,11 @@ export class AppComponent {
   setIconsApiHitters(){
     this.HittersService.getHitters().subscribe((data)=>{
       this.playersHitters = data
-      console.log(data)
     })
   }
   setIconsApiGames(){
     this.HittersService.getGames().subscribe((data)=>{
       this.games = this.setLogo(data)
-      console.log(data)
     })
   }
   setIconsApiPitchers(){
@@ -52,6 +50,25 @@ export class AppComponent {
     this.HittersService.getVersus().subscribe((data)=>{
       this.playersVersus = data
     })
+  }
+  setPlayers(data: any, market: any){
+    console.log(market)
+    let playerProps : any = []
+    data.forEach((element: any)=>{
+      if(market === "strikeOuts"){
+        const props =  {
+          "name" : element.name,
+          "atbatVsPitcher": element.vsPitcher.atBat,
+          "atgamesVsPitcher": element.vsPitcher.games,
+          "strikeOutVsPitcher" :parseInt(element.vsPitcher.strikeOut, 10),
+          "atbatVsThrow": element.vsPitcherThrow.atBat,
+          "atgamesVsThrow": element.vsPitcherThrow.games,
+          "strikeOutVsThrow" :parseInt(element.vsPitcherThrow.strikeOut,10),
+        }
+        playerProps.push(props)
+      }
+    })
+    return playerProps
   }
 
 
@@ -68,9 +85,8 @@ export class AppComponent {
           const gamesvS = element2.gamesvS
           playerStats.odds = []
           playerStats.rival = element2.rival
-          console.log(element2)
           if(odds !== null){
-            playerStats.players = element2.players
+            const players = element2.players
             odds.forEach((element: any) => {
               playerStats.name = element.name
               playerStats.team = element2.team.replace("2025 ","")
@@ -82,6 +98,7 @@ export class AppComponent {
                   "line" : parseFloat(element.line),
                   "over" : element.overOdd,
                   "under" : element.underOdd,
+                  "players" : this.setPlayers(players, "strikeOuts"),
                   "cover" : this.setCover(games.game1.strikeOuts,
                     games.game2.strikeOuts2,
                     games.game3.strikeOuts3,
@@ -106,6 +123,7 @@ export class AppComponent {
                     "game4" : gamesvS?.game4.strikeOuts4,
                     "game5" : gamesvS?.game5.strikeOuts5
                   }
+                 
                 }
                 playerStats.odds.push(props)
               }
@@ -248,8 +266,8 @@ export class AppComponent {
             });
           }
           this.playersToView.push(playerStats)
-
         });
+        console.log(this.playersToView)
       } else if(view === "Hitters"){
         this.view = view
         this.playersHitters.forEach((element2: any) => {
@@ -546,7 +564,6 @@ export class AppComponent {
           this.playersToView.push(playerStats)
         });
       }
-      console.log(this.playersToView)
     }
   }
   setCover(g1: any,g2: any,g3: any,g4: any,g5: any, line: any){
@@ -578,7 +595,6 @@ export class AppComponent {
     data.forEach( (element : any) => {
       element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/"+element.homeName+".png"
       element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/"+element.awayName+".png"
-      console.log(element)
     });
     return data
   }
@@ -591,191 +607,4 @@ export class AppComponent {
       }
       return ruta
   }
-
-  /**
-   * 
-      if(element.awayName === "Rockies"){
-        element.awayLogo = ""
-      }
-      if(element.awayName === "Rays"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Rays.png"
-      }
-      if(element.awayName === "Orioles"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Orioles.png"
-      }
-      if(element.awayName === "Blue Jays"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Blue_Jays.png"
-      }
-      if(element.awayName === "Red Sox"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Red%20Sox.png"
-      }
-      if(element.awayName === "Rangers"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Rangers.png"
-      }
-      if(element.awayName === "Pirates"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Pirates.png"
-      }
-      if(element.awayName === "Marlins"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Marlins.png"
-      }
-      if(element.awayName === "Mets"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Mets.png"
-      }
-      if(element.awayName === "Astros"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Astros.png"
-      }
-      if(element.awayName === "Braves"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Braves.png"
-      }
-      if(element.awayName === "Padres"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Padres.png"
-      }
-      if(element.awayName === "Cubs"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Cubs.png"
-      }
-      if(element.awayName === "Diamondbacks"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Diamondbacks.png"
-      }
-      if(element.awayName === "Athletics"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Athletics.png"
-      }
-      if(element.awayName === "Mariners" ){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Mariners.png"
-      }
-      if(element.awayName === "Tigers"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Tigers.png"
-      }
-      if(element.awayName === "Dodgers"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Dodgers.png"
-      }
-      if(element.homeName === "Dodgers"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Dodgers.png"
-      }
-      if(element.homeName === "Rockies"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Rockies.png"
-      }
-      if(element.homeName === "Rays"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Rays.png"
-      }
-      if(element.homeName === "Orioles"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Orioles.png"
-      }
-      if(element.homeName === "Blue Jays"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Blue_Jays.png"
-      }
-      if(element.homeName === "Red Sox"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Red%20Sox.png"
-      }
-      if(element.homeName === "Rangers"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Rangers.png"
-      }
-      if(element.homeName === "Pirates"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Pirates.png"
-      }
-      if(element.homeName === "Marlins"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Marlins.png"
-      }
-      if(element.homeName === "Mets"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Mets.png"
-      }
-      if(element.homeName === "Astros"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Astros.png"
-      }
-      if(element.homeName === "Braves"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Braves.png"
-      }
-      if(element.homeName === "Padres"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Padres.png"
-      }
-      if(element.homeName === "Cubs"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/Cubs.png"
-      }
-      if(element.homeName === "Diamondbacks"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Diamondbacks.png"
-      }
-      if(element.homeName === "Athletics"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Athletics.png"
-      }
-      if(element.homeName === "Mariners"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Mariners.png"
-      }
-      if(element.homeName === "Tigers"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Tigers.png"
-      }
-      if(element.awayName === "Dodgers"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Dodgers.png"
-      }
-      if(element.awayName === "Phillies"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Phillies.png"
-      }
-      if(element.homeName === "Phillies"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Phillies.png"
-      }
-      if(element.homeName === "Reds"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Reds.png"
-      }
-      if(element.homeName === "Royals"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Royals.png"
-      }
-      if(element.homeName === "Brewers"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Brewers.png"
-      }
-      if(element.homeName === "Angels"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Angels.png"
-      }
-      if(element.homeName === "Cardinals"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Cardinals.png"
-      }
-      if(element.homeName === "Twins"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Twins.png"
-      }
-      if(element.awayName === "Reds"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Reds.png"
-      }
-      if(element.awayName === "Royals"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Royals.png"
-      }
-      if(element.awayName === "Brewers"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Brewers.png"
-      }
-      if(element.awayName === "Angels"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Angels.png"
-      }
-      if(element.awayName === "Cardinals"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Cardinals.png"
-      }
-      if(element.awayName === "Twins"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Twins.png"
-      }
-      if(element.awayName === "White Sox"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/White_Sox.png"
-      }
-      if(element.homeName === "White Sox"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/White_Sox.png"
-      }
-      if(element.awayName === "Giants"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Giants.png"
-      }
-      if(element.homeName === "Giants"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Giants.png"
-      }
-      if(element.awayName === "Guardians"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Guardians.png"
-      }
-      if(element.homeName === "Guardians"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Guardians.png"
-      }
-      if(element.awayName === "Yankees"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Yankees.png"
-      }
-      if(element.homeName === "Yankees"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Yankees.png"
-      }
-      if(element.awayName === "Nationals"){
-        element.awayLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Nationals.png"
-      }
-      if(element.homeName === "Nationals"){
-        element.homeLogo = "https://lexfitcode.github.io/dummieweb/Logos%20mlb/Nationals.png"
-      }
-   * / */
 }

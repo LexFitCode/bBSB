@@ -284,3 +284,13 @@ padding: 2rem 1rem;
 .mainWrapper{
   display: flex;
 }
+
+.marketWraper{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid black;
+  div{
+    display: flex;
+  }
+}
