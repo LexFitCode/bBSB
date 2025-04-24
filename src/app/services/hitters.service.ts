@@ -8,6 +8,7 @@ export class HittersService {
   private _url = 'https://lexfitcode.github.io/dummieweb/lm/hitters.json'
   private _url2 = 'https://lexfitcode.github.io/dummieweb/lm/pitchers.json'
   private _url3 = 'https://lexfitcode.github.io/dummieweb/lm/versus.json'
+  private _url4 = 'https://lexfitcode.github.io/dummieweb/lm/games.json'
   constructor( private http:HttpClient ) { }
   getHitters(): Observable<any> {
     return this.http.get<any>(this._url)
@@ -18,6 +19,8 @@ export class HittersService {
   getVersus(): Observable<any> {
     return this.http.get<any>(this._url3)
   }
-
+  getGames(): Observable<any> {
+    return this.http.get<any>(this._url4)
+  }
 
 }

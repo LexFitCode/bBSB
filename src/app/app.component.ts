@@ -17,12 +17,13 @@ export class AppComponent {
   view : string = 'hitters'
   pitchers : any= []
   playersToView : any = []
+  games : any = []
   constructor(private HittersService: HittersService) { }
   ngOnInit(): void {
     this.setIconsApiHitters()
     this.setIconsApiPitchers()
     this.setIconsApiVersus()
-
+    this.setIconsApiGames()
 
     //this.playersIcons = Object.values(icons) //offline
   }
@@ -33,6 +34,12 @@ export class AppComponent {
   setIconsApiHitters(){
     this.HittersService.getHitters().subscribe((data)=>{
       this.playersHitters = data
+      console.log(data)
+    })
+  }
+  setIconsApiGames(){
+    this.HittersService.getGames().subscribe((data)=>{
+      this.games = data
       console.log(data)
     })
   }
