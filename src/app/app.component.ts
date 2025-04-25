@@ -51,19 +51,61 @@ export class AppComponent {
       this.playersVersus = data
     })
   }
-  setPlayers(data: any, market: any){
-    console.log(market)
+  setPlayers(data: any, market: string, vs: string){
+    console.log(data)
     let playerProps : any = []
     data.forEach((element: any)=>{
-      if(market === "strikeOuts"){
+      if(market === "strikeOuts" && vs === "vsPitcher"){
         const props =  {
           "name" : element.name,
-          "atbatVsPitcher": element.vsPitcher.atBat,
-          "atgamesVsPitcher": element.vsPitcher.games,
-          "strikeOutVsPitcher" :parseInt(element.vsPitcher.strikeOut, 10),
-          "atbatVsThrow": element.vsPitcherThrow.atBat,
-          "atgamesVsThrow": element.vsPitcherThrow.games,
-          "strikeOutVsThrow" :parseInt(element.vsPitcherThrow.strikeOut,10),
+          "atbat": element.vsPitcher.atBat,
+          "games": element.vsPitcher.games,
+          "stats" :this.toNumber(element.vsPitcher.strikeOut),
+        }
+        playerProps.push(props)
+      }
+      if(market === "strikeOuts" && vs === "vsThrow"){
+        const props =  {
+          "name" : element.name,
+          "atbat": element.vsPitcherThrow.atBat,
+          "games": element.vsPitcherThrow.games,
+          "stats" :this.toNumber(element.vsPitcherThrow.strikeOut),
+        }
+        playerProps.push(props)
+      }
+      if(market === "walks" && vs === "vsPitcher"){
+        const props =  {
+          "name" : element.name,
+          "atbat": element.vsPitcher.atBat,
+          "games": element.vsPitcher.games,
+          "stats" :this.toNumber(element.vsPitcher.baseXBola),
+        }
+          playerProps.push(props)
+      }
+      if(market === "walks" && vs === "vsThrow"){
+        const props =  {
+          "name" : element.name,
+          "atbat": element.vsPitcherThrow.atBat,
+          "games": element.vsPitcherThrow.games,
+          "stats" :this.toNumber(element.vsPitcherThrow.baseXBola),
+        }
+          playerProps.push(props)
+      }
+      if(market === "hitsAllowed" && vs === "vsPitcher"){
+        const props =  {
+          "name" : element.name,
+          "atbat": element.vsPitcher.atBat,
+          "games": element.vsPitcher.games,
+          "stats" :this.toNumber(element.vsPitcher.Hits),
+        }
+        playerProps.push(props)
+      }
+      if(market === "hitsAllowed" && vs === "vsThrow"){
+        const props =  {
+          "name" : element.name,
+          "atbat": element.vsPitcherThrow.atBat,
+          "games": element.vsPitcherThrow.games,
+          "stats" :this.toNumber(element.vsPitcherThrow.Hits),
         }
         playerProps.push(props)
       }
@@ -98,7 +140,8 @@ export class AppComponent {
                   "line" : parseFloat(element.line),
                   "over" : element.overOdd,
                   "under" : element.underOdd,
-                  "players" : this.setPlayers(players, "strikeOuts"),
+                  "playersVsPitcher" : this.setPlayers(players, "strikeOuts","vsPitcher"),
+                  "playersVsThrow" : this.setPlayers(players, "strikeOuts","vsThrow"),
                   "cover" : this.setCover(games.game1.strikeOuts,
                     games.game2.strikeOuts2,
                     games.game3.strikeOuts3,
@@ -123,7 +166,7 @@ export class AppComponent {
                     "game4" : gamesvS?.game4.strikeOuts4,
                     "game5" : gamesvS?.game5.strikeOuts5
                   }
-                 
+
                 }
                 playerStats.odds.push(props)
               }
@@ -134,6 +177,7 @@ export class AppComponent {
                   "line" : parseFloat(element.line),
                   "over" : element.overOdd,
                   "under" : element.underOdd,
+
                  /* "cover" :this.setCover(games.game1.baseXBola,
                     games.game2.baseXBola2,
                     games.game3.baseXBola3,
@@ -168,6 +212,8 @@ export class AppComponent {
                   "line" : parseFloat(element.line),
                   "over" : element.overOdd,
                   "under" : element.underOdd,
+                  "playersVsPitcher" : this.setPlayers(players, "walks","vsPitcher"),
+                  "playersVsThrow" : this.setPlayers(players, "walks","vsThrow"),
                   "cover" :this.setCover(games.game1.baseXBola,
                     games.game2.baseXBola2,
                     games.game3.baseXBola3,
@@ -236,6 +282,8 @@ export class AppComponent {
                   "line" : parseFloat(element.line),
                   "over" : element.overOdd,
                   "under" : element.underOdd,
+                  "playersVsPitcher" : this.setPlayers(players, "hitsAllowed","vsPitcher"),
+                  "playersVsThrow" : this.setPlayers(players, "hitsAllowed","vsThrow"),
                   "cover" : this.setCover(games.game1.hitsAllowed,
                     games.game2.hitsAllowed2,
                     games.game3.hitsAllowed3,
@@ -586,7 +634,7 @@ export class AppComponent {
         return i
   }
   toNumber(value:string){
-    if(value !== ""){
+    if(value !== "" && value !== undefined && value !== null){
       return parseInt(value,10)
     }
     return 0

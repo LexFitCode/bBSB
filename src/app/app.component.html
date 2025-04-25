@@ -1,116 +1,185 @@
 <div class="mainWrapper">
   <aside class="sidebar">
     <ul class="sidebar__list">
-      <li class="sidebar__element" (click)="setView('Hitters')" >
+      <li class="sidebar__element" (click)="setView('Hitters')">
         <span>All Games</span>
       </li>
       @for (item of games; track $index) {
-        <li class="sidebar__element" (click)="setView('Hitters')" >
-          <div class="sidebar__logo">
-  
-            <img src="{{ item.awayLogo }}" alt="{{ item.awayName }}" />
-            <span>{{'@'}}</span>
-            <img src="{{ item.homeLogo }}" alt="{{ item.homeName }}" />
-          </div>
-          <div>
-            <span>{{item.hour}}</span>
-          </div>
-        </li>
+      <li class="sidebar__element" (click)="setView('Hitters')">
+        <div class="sidebar__logo">
+          <img src="{{ item.awayLogo }}" alt="{{ item.awayName }}" />
+          <span>{{ "@" }}</span>
+          <img src="{{ item.homeLogo }}" alt="{{ item.homeName }}" />
+        </div>
+        <div>
+          <span>{{ item.hour }}</span>
+        </div>
+      </li>
       }
     </ul>
   </aside>
 
-
   <div class="dataWrapper">
-
     <div class="buttonWrapper2">
-      <div [ngClass]="{'active' : view === 'Hitters'}" (click)="setView('Hitters')" >Hitters</div>
-      <div [ngClass]="{'active' : view === 'Pitchers'}" (click)="setView('Pitchers')" >Pitchers</div>
+      <div
+        [ngClass]="{ active: view === 'Hitters' }"
+        (click)="setView('Hitters')"
+      >
+        Hitters
+      </div>
+      <div
+        [ngClass]="{ active: view === 'Pitchers' }"
+        (click)="setView('Pitchers')"
+      >
+        Pitchers
+      </div>
     </div>
 
-    @if (view === "Hitters"){<app-hitter-hit [playersHitters]="playersToView"></app-hitter-hit>}
-    @if (view === "Pitchers"){
-    @for (item of playersToView; track $index) {
-    
-      @if(item.name){
-        <div
-        class="">
-          <div class="nameWrapper">
-          <span class="name">{{ item.name }}</span>
-          <span class="team">{{ item.team }}</span>
-          <span class="game">{{ item?.game?.awayName }} at {{ item?.game?.homeName }} {{ item?.game?.hour }}</span>
-          </div>
-        <div>
-    
-    
-        <div class="horizontal-scroll-wrapper-web">
+    @if (view === "Hitters"){<app-hitter-hit
+      [playersHitters]="playersToView"
+    ></app-hitter-hit
+    >} @if (view === "Pitchers"){ @for (item of playersToView; track $index) {
+    @if(item.name){
+    <div class="">
+      <div class="nameWrapper">
+        <span class="name">{{ item.name }}</span>
+        <span class="team">{{ item.team }}</span>
+        <span class="game"
+          >{{ item?.game?.awayName }} at {{ item?.game?.homeName }}
+          {{ item?.game?.hour }}</span
+        >
+      </div>
+      <div>
+        <div class="oddsWrapper">
           @for (item of item.odds; track $index){
-            <div class="marketWrapper">
-              <span class="" [ngClass]="{'oddCoverTitle' : item.cover >= 3}">{{ item?.market   }}</span>
-              <div class="flex">
-                <div >
-                  <div class="">
-                    <span>{{ item?.line   }}</span>
-                    <div>
-                      <span >{{ item?.over  }}</span>
-                      <span >{{ item?.under  }}</span>
-                    </div>
-                  </div>
-                  <div class="">
-                    <span class="gamesCardSubtitle">Ultimos 5 juegos</span>
-                    <div>
-                      <span class="gameItem" [ngClass]="{'cover' : item?.games?.game1 > item.line}" >{{ item?.games?.game1}}</span>
-                      <span class="gameItem" [ngClass]="{'cover' : item?.games?.game2 > item.line}">{{ item?.games?.game2}}</span>
-                      <span class="gameItem" [ngClass]="{'cover' : item?.games?.game3 > item.line}">{{ item?.games?.game3}}</span>
-                      <span class="gameItem" [ngClass]="{'cover' : item?.games?.game4 > item.line}">{{ item?.games?.game4}}</span>
-                      <span class="gameItem" [ngClass]="{'cover' : item?.games?.game5 > item.line}">{{ item?.games?.game5}}</span>
-                    </div>
-                  </div>
-                  @if (item.gamesvS.game1){<div class="">
-                    <span class="gamesCardSubtitle">Ultimos 5 juegos vs {{item.rival}}</span>
-                    <div>
-                      <span class="gameItem" [ngClass]="{'cover' : item?.gamesvS?.game1 > item.line}">{{ item?.gamesvS?.game1}}</span>
-                      <span class="gameItem" [ngClass]="{'cover' : item?.gamesvS?.game2 > item.line}">{{ item?.gamesvS?.game2}}</span>
-                      <span class="gameItem" [ngClass]="{'cover' : item?.gamesvS?.game3 > item.line}">{{ item?.gamesvS?.game3}}</span>
-                      <span class="gameItem" [ngClass]="{'cover' : item?.gamesvS?.game4 > item.line}">{{ item?.gamesvS?.game4}}</span>
-                      <span class="gameItem" [ngClass]="{'cover' : item?.gamesvS?.game5 > item.line}">{{ item?.gamesvS?.game5}}</span>
-                    </div>
-                  </div>}
-                </div>
-                <div >
-                  <span>vs Pitchers</span>
-                  @for (item of item.players; track $index){
-                    <ul>
-                      @if(item.strikeOutVsPitcher >= item.atgamesVsPitcher - 1 && item.strikeOutVsPitcher > 0){<li>
-                         {{item.name}} - {{item.atgamesVsPitcher}} - {{item.atbatVsPitcher}} - {{item.strikeOutVsPitcher}} 
-                      </li>}
-                    </ul>
-                  }
-                  <span>vs Throw</span>
-                  @for (item of item.players; track $index){
-                    <ul>
-                      @if(item.strikeOutVsThrow >= item.atgamesVsThrow - 1 && item.strikeOutVsThrow > 0){<li>
-                        {{item.name}} -{{item.atgamesVsThrow}} - {{item.atbatVsThrow}} - {{item.strikeOutVsThrow}} 
-                     </li>}
-                    </ul>
-                  }
-
-
+          <div class="marketWrapper">
+            <span class="oddTitle" [ngClass]="{ oddCoverTitle: item.cover >= 3 }">{{
+              item?.market
+            }}</span>
+            <div [ngClass]="{ flex: item.market === 'Strikeouts' || item.market === 'Walks' || item.market === 'Hits Allowed' }">
+            <div>
+              <div class="oddsCardVs">
+                <span>{{ item?.line }}</span>
+                <div>
+                  <span>{{ item?.over }}</span>
+                  <span>{{ item?.under }}</span>
                 </div>
               </div>
+              <div class="">
+                <span class="gamesCardSubtitle">Ultimos 5 juegos</span>
+                <div class="gameItem">
+                  <span
+                    class="gameItem"
+                    [ngClass]="{ cover: item?.games?.game1 > item.line }"
+                    >{{ item?.games?.game1 }}</span
+                  >
+                  <span
+                    class="gameItem"
+                    [ngClass]="{ cover: item?.games?.game2 > item.line }"
+                    >{{ item?.games?.game2 }}</span
+                  >
+                  <span
+                    class="gameItem"
+                    [ngClass]="{ cover: item?.games?.game3 > item.line }"
+                    >{{ item?.games?.game3 }}</span
+                  >
+                  <span
+                    class="gameItem"
+                    [ngClass]="{ cover: item?.games?.game4 > item.line }"
+                    >{{ item?.games?.game4 }}</span
+                  >
+                  <span
+                    class="gameItem"
+                    [ngClass]="{ cover: item?.games?.game5 > item.line }"
+                    >{{ item?.games?.game5 }}</span
+                  >
+                </div>
+              </div>
+              @if (item.gamesvS.game1){
+              <div class="">
+                <span class="gamesCardSubtitle"
+                  >Ultimos 5 juegos vs {{ item.rival }}</span
+                >
+                <div class="gameItem">
+                  <span
+                    class="gameItem"
+                    [ngClass]="{ cover: item?.gamesvS?.game1 > item.line }"
+                    >{{ item?.gamesvS?.game1 }}</span
+                  >
+                  <span
+                    class="gameItem"
+                    [ngClass]="{ cover: item?.gamesvS?.game2 > item.line }"
+                    >{{ item?.gamesvS?.game2 }}</span
+                  >
+                  <span
+                    class="gameItem"
+                    [ngClass]="{ cover: item?.gamesvS?.game3 > item.line }"
+                    >{{ item?.gamesvS?.game3 }}</span
+                  >
+                  <span
+                    class="gameItem"
+                    [ngClass]="{ cover: item?.gamesvS?.game4 > item.line }"
+                    >{{ item?.gamesvS?.game4 }}</span
+                  >
+                  <span
+                    class="gameItem"
+                    [ngClass]="{ cover: item?.gamesvS?.game5 > item.line }"
+                    >{{ item?.gamesvS?.game5 }}</span
+                  >
+                </div>
+              </div>
+              }
             </div>
-           }
-        </div>
-    
-    
-    
+            <div class="vsWrapper">
+              @if(item.playersVsPitcher){<span>vs Pitcher </span>
+                @for (item of item.playersVsPitcher; track $index){
+                @if(item.stats >= item.games - 1 && item.stats > 0){
+                <div>
+                  <div class="gameItemVs">
+                    <span > {{ item.name }} </span>
+                    <span>
+                      {{ item.games }}
+                    </span>
+                    <span>
+                      {{ item.atbat }}
+                    </span>
+                    <span>
+                      {{ item.stats }}
+                    </span>
+                  </div>
+                </div>
+                } }
+              }
+            </div>
+            <div class="vsWrapper">
+              @if(item.playersVsThrow){<span>vs Throw</span>
+                @for (item of item.playersVsThrow; track $index){
+                @if(item.stats >= item.games - 1 && item.stats > 0){
+                  <div class="">
+                    <div class="gameItemVs">
+                    <span class="gamesCardSubtitle">
+                      {{ item.name }}
+                    </span>
+                    <span>
+                      {{ item.games }}
+                    </span>
+                    <span>
+                      {{ item.atbat }}
+                    </span>
+                    <span>
+                      {{ item.stats }}
+                    </span>
+                  </div>
+                </div>
+                } }
+              }
+            </div>
+            </div>
+          </div>
+          }
         </div>
       </div>
-    }
-    }
-    
-    }
-
+    </div>
+    } } }
   </div>
 </div>
-
