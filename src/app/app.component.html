@@ -5,11 +5,17 @@
         <span>All Games</span>
       </li>
       @for (item of games; track $index) {
-      <li class="sidebar__element" (click)="setView('Hitters')">
+      <li class="sidebar__element" (click)="setViewTeam(item.game.away.id, item.game.home.id)">
         <div class="sidebar__logo">
-          <img src="{{ item.awayLogo }}" alt="{{ item.awayName }}" />
+          <div>
+            <img src="{{ item.awayLogo }}" alt="{{ item.awayName }}" />
+            <span>{{item.game.away.runs}}</span>
+          </div>
           <span>{{ "@" }}</span>
-          <img src="{{ item.homeLogo }}" alt="{{ item.homeName }}" />
+          <div>
+            <img src="{{ item.homeLogo }}" alt="{{ item.homeName }}" />
+            <span>{{item.game.home.runs}}</span>
+          </div>
         </div>
         <div>
           <span>{{ item.hour }}</span>

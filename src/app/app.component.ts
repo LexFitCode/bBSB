@@ -5,6 +5,7 @@ import { GamesComponent } from './components/games/games.component';
 import { OddsComponent } from './components/odds/odds.component';
 import { HitterHitComponent } from './components/hitter-hit/hitter-hit.component';
 import {NgClass} from '@angular/common';
+import { GamesService } from './services/games.service';
 
 @Component({
   selector: 'app-root',
@@ -18,18 +19,52 @@ export class AppComponent {
   pitchers : any= []
   playersToView : any = []
   games : any = []
-  constructor(private HittersService: HittersService) { }
+  constructor(private HittersService: HittersService,
+    private GamesService: GamesService
+  ) { }
   ngOnInit(): void {
     this.setIconsApiHitters()
     this.setIconsApiPitchers()
     this.setIconsApiVersus()
     this.setIconsApiGames()
-
     //this.playersIcons = Object.values(icons) //offline
   }
   playersHitters: any= []
   playersPitchers: any= []
   playersVersus: any= []
+  gameDay1: any = []
+  gameDay2: any = []
+  gameDay3: any = []
+  gameDay4: any = []
+  gameDay5: any = []
+  gameDay6: any = []
+  gameDay7: any = []
+  gameDay8: any = []
+  gameDay9: any = []
+  gameDay10: any = []
+  gameDay11: any = []
+  gameDay12: any = []
+  gameDay13: any = []
+  gameDay14: any = []
+  gameDay15: any = []
+  gameDay16: any = []
+  gameDay17: any = []
+  gameDay18: any = []
+  gameDay19: any = []
+  gameDay20: any = []
+  gameDay21: any = []
+  gameDay22: any = []
+  gameDay23: any = []
+  gameDay24: any = []
+  gameDay25: any = []
+  gameDay26: any = []
+  gameDay27: any = []
+  gameDay28: any = []
+  gameDay29: any = []
+  gameDay30: any = []
+  gameDay31: any = []
+  gameDay32: any = []
+  gameDay33: any = []
 
   setIconsApiHitters(){
     this.HittersService.getHitters().subscribe((data)=>{
@@ -612,8 +647,15 @@ export class AppComponent {
           this.playersToView.push(playerStats)
         });
       }
+      return this.playersToView
     }
   }
+
+  setViewTeam(away: string, home: string){
+    console.log(away, home)
+
+  }
+
   setCover(g1: any,g2: any,g3: any,g4: any,g5: any, line: any){
       let i = 0
         if(g1 > line){
@@ -640,9 +682,10 @@ export class AppComponent {
     return 0
   }
   setLogo(data: any){
+    console.log(data)
     data.forEach( (element : any) => {
-      element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/"+element.homeName+".png"
-      element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/"+element.awayName+".png"
+      element.homeLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/"+element.game.home.name+".png"
+      element.awayLogo = "https://lexfitcode.github.io/dummieweb/logos%20mlb/"+element.game.away.name+".png"
     });
     return data
   }
@@ -654,5 +697,171 @@ export class AppComponent {
         break;
       }
       return ruta
+  }
+
+  setGameDay1(){
+    this.GamesService.getStatsDay1().subscribe((data)=>{
+      this.gameDay1 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay3(){
+    this.GamesService.getStatsDay3().subscribe((data)=>{
+      this.gameDay3 = data
+    })
+  }
+  setGameDay4(){
+    this.GamesService.getStatsDay4().subscribe((data)=>{
+      this.gameDay4 = data
+    })
+  }
+  setGameDay5(){
+    this.GamesService.getStatsDay5().subscribe((data)=>{
+      this.gameDay5 = data
+    })
+  }
+  setGameDay6(){
+    this.GamesService.getStatsDay6().subscribe((data)=>{
+      this.gameDay6 = data
+    })
+  }
+  setGameDay7(){
+    this.GamesService.getStatsDay7().subscribe((data)=>{
+      this.gameDay7 = data
+    })
+  }
+  setGameDay8(){
+    this.GamesService.getStatsDay8().subscribe((data)=>{
+      this.gameDay8 = data
+    })
+  }
+  setGameDay9(){
+    this.GamesService.getStatsDay9().subscribe((data)=>{
+      this.gameDay9 = data
+    })
+  }
+  setGameDay10(){
+    this.GamesService.getStatsDay10().subscribe((data)=>{
+      this.gameDay10 = data
+    })
+  }
+  setGameDay11(){
+    this.GamesService.getStatsDay11().subscribe((data)=>{
+      this.gameDay11 = data
+    })
+  }
+  setGameDay12(){
+    this.GamesService.getStatsDay12().subscribe((data)=>{
+      this.gameDay12 = data
+    })
+  }
+  setGameDa13(){
+    this.GamesService.getStatsDay13().subscribe((data)=>{
+      this.gameDay13= data
+    })
+  }
+  setGameDay14(){
+    this.GamesService.getStatsDay14().subscribe((data)=>{
+      this.gameDay14 = data
+    })
+  }
+  setGameDay15(){
+    this.GamesService.getStatsDay15().subscribe((data)=>{
+      this.gameDay15 = data
+    })
+  }
+  setGameDay16(){
+    this.GamesService.getStatsDay16().subscribe((data)=>{
+      this.gameDay16 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
+  }
+  setGameDay2(){
+    this.GamesService.getStatsDay2().subscribe((data)=>{
+      this.gameDay2 = data
+    })
   }
 }
