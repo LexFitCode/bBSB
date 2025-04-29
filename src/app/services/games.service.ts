@@ -41,7 +41,7 @@ export class GamesService {
   private _urlday31 = 'https://lexfitcode.github.io/dummieweb/lm/dayGames/042425.json'
   private _urlday32 = 'https://lexfitcode.github.io/dummieweb/lm/dayGames/042525.json'
   private _urlday33 = 'https://lexfitcode.github.io/dummieweb/lm/dayGames/042625.json'
-
+  private _urlday34 = 'https://lexfitcode.github.io/dummieweb/lm/dayGames/042725.json'
 
 
     getStatsDay1(): Observable<any> {
@@ -142,6 +142,9 @@ export class GamesService {
     }
     getStatsDay33(): Observable<any> {
       return this.http.get<any>(this._urlday33)
+    }
+    getStatsDay34(): Observable<any> {
+      return this.http.get<any>(this._urlday34)
     }
 
 }

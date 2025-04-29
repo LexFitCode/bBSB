@@ -27,6 +27,7 @@ export class AppComponent {
     this.setIconsApiPitchers()
     this.setIconsApiVersus()
     this.setIconsApiGames()
+    this.getDataGames()
     //this.playersIcons = Object.values(icons) //offline
   }
   playersHitters: any= []
@@ -65,7 +66,7 @@ export class AppComponent {
   gameDay31: any = []
   gameDay32: any = []
   gameDay33: any = []
-
+  gameDay34: any = []
   setIconsApiHitters(){
     this.HittersService.getHitters().subscribe((data)=>{
       this.playersHitters = data
@@ -652,8 +653,516 @@ export class AppComponent {
   }
 
   setViewTeam(away: string, home: string){
-    console.log(away, home)
-
+    const homeData = this.getTeamInfo(home, "home")
+    const awayData = this.getTeamInfo(away, "away")
+    console.log(homeData)
+    console.log(awayData)    
+  }
+  getTeamInfo(team: string, status: string){
+    let new_game: any = {}
+    const home_games_home : any = []
+    const away_games_away: any  = []
+    const home_games_total: any = []
+    const away_games_total: any = []
+    this.gameDay1.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay2.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay3.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay4.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay5.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay6.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay7.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay8.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay9.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay10.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay11.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay12.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay13.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay14.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay15.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay16.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay17.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay18.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay19.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay20.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay21.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay22.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay23.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay24.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay25.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay26.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay27.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay28.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay29.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay30.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay31.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay32.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay32.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay33.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    this.gameDay34.forEach((element2 : any)=>{
+      if(status==="away"){
+        if (element2.away_team === team){
+            away_games_away.push(element2)}
+        if (element2.away_team === team || element2.home_team === team){
+            away_games_total.push(element2)}
+      }
+      if(status === "home"){
+        if (element2.home_team === team){
+            home_games_home.push(element2)}
+        if (element2.home_team === team || element2.away_team === team){
+            home_games_total.push(element2)}
+      }
+    })
+    if(status === "home"){
+      new_game.home_games_home = home_games_home
+      new_game.home_games_total = home_games_total
+    }
+    if(status === "away"){
+      new_game.away_games_away = away_games_away
+      new_game.away_games_total = away_games_total
+    }
+    return new_game
   }
 
   setCover(g1: any,g2: any,g3: any,g4: any,g5: any, line: any){
@@ -759,7 +1268,7 @@ export class AppComponent {
       this.gameDay12 = data
     })
   }
-  setGameDa13(){
+  setGameDay13(){
     this.GamesService.getStatsDay13().subscribe((data)=>{
       this.gameDay13= data
     })
@@ -779,89 +1288,133 @@ export class AppComponent {
       this.gameDay16 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay17(){
+    this.GamesService.getStatsDay17().subscribe((data)=>{
+      this.gameDay17 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay18(){
+    this.GamesService.getStatsDay18().subscribe((data)=>{
+      this.gameDay18 = data
+    })
+  }  
+  setGameDay19(){
+    this.GamesService.getStatsDay19().subscribe((data)=>{
+      this.gameDay19 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay20(){
+    this.GamesService.getStatsDay20().subscribe((data)=>{
+      this.gameDay20 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay21(){
+    this.GamesService.getStatsDay21().subscribe((data)=>{
+      this.gameDay21 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay22(){
+    this.GamesService.getStatsDay22().subscribe((data)=>{
+      this.gameDay22 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay23(){
+    this.GamesService.getStatsDay23().subscribe((data)=>{
+      this.gameDay23 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay24(){
+    this.GamesService.getStatsDay24().subscribe((data)=>{
+      this.gameDay24 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay25(){
+    this.GamesService.getStatsDay25().subscribe((data)=>{
+      this.gameDay25 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay26(){
+    this.GamesService.getStatsDay26().subscribe((data)=>{
+      this.gameDay26 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay27(){
+    this.GamesService.getStatsDay27().subscribe((data)=>{
+      this.gameDay27 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay28(){
+    this.GamesService.getStatsDay28().subscribe((data)=>{
+      this.gameDay28 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay29(){
+    this.GamesService.getStatsDay29().subscribe((data)=>{
+      this.gameDay29 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay30(){
+    this.GamesService.getStatsDay30().subscribe((data)=>{
+      this.gameDay30 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay31(){
+    this.GamesService.getStatsDay31().subscribe((data)=>{
+      this.gameDay31 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay32(){
+    this.GamesService.getStatsDay32().subscribe((data)=>{
+      this.gameDay32 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay33(){
+    this.GamesService.getStatsDay33().subscribe((data)=>{
+      this.gameDay33 = data
     })
   }
-  setGameDay2(){
-    this.GamesService.getStatsDay2().subscribe((data)=>{
-      this.gameDay2 = data
+  setGameDay34(){
+    this.GamesService.getStatsDay34().subscribe((data)=>{
+      this.gameDay34 = data
+      console.log(data)
     })
+  }
+
+  getDataGames(){
+    this.setGameDay1()
+    this.setGameDay2()
+    this.setGameDay3()
+    this.setGameDay1()
+    this.setGameDay4()
+    this.setGameDay5()
+    this.setGameDay6()
+    this.setGameDay7()
+    this.setGameDay8()
+    this.setGameDay9()
+    this.setGameDay10()
+    this.setGameDay11()
+    this.setGameDay12()
+    this.setGameDay13()
+    this.setGameDay14()
+    this.setGameDay15()
+    this.setGameDay16()
+    this.setGameDay17()
+    this.setGameDay18()
+    this.setGameDay19()
+    this.setGameDay20()
+    this.setGameDay21()
+    this.setGameDay22()
+    this.setGameDay23()
+    this.setGameDay24()
+    this.setGameDay25()
+    this.setGameDay26()
+    this.setGameDay27()
+    this.setGameDay28()
+    this.setGameDay29()
+    this.setGameDay30()
+    this.setGameDay31()
+    this.setGameDay32()
+    this.setGameDay33()
+    this.setGameDay34()
   }
 }
